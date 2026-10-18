@@ -18,10 +18,10 @@ on:
         default: docker-compose.yml
       base-url:
         type: string
-        default: http://127.0.0.1:8080
+        default: http://127.0.0.1:5000
       health-url:
         type: string
-        default: http://127.0.0.1:8080/healthz
+        default: http://127.0.0.1:5000/healthz
       script:
         type: string
         default: scripts/screenshots.mjs
@@ -107,11 +107,17 @@ jobs:
           git add "$OUT_DIR"
           if git diff --cached --quiet; then echo "No screenshot changes"; exit 0; fi
           git commit -m "docs: update screenshots"
-          git push --force-with-lease origin "$BRANCH"
-          if gh pr view "$BRANCH" >/dev/null 2>&1; then
+          # Force-push: the bot branch may hold state left by earlier failed runs;
+          # --force-with-lease turns every re-run into a red herring.
+          git push --force origin "$BRANCH"
+          # Open-only guard: a bare match also hits MERGED bot PRs.
+          if gh pr view "$BRANCH" --state OPEN >/dev/null 2>&1; then
             echo "PR already open for $BRANCH"
-          else
-            gh pr create --base "$DEFAULT_BRANCH" --head "$BRANCH" \
+          elif ! gh pr create --base "$DEFAULT_BRANCH" --head "$BRANCH" \
               --title "docs: update screenshots" \
-              --body "Automated screenshots captured from the demo stack. Review each image for real data before merging."
+              --body "Automated screenshots captured from the demo stack. Review each image for real data before merging."; then
+            # A concurrent run may create the PR between the check and create;
+            # an existing PR is the desired outcome, so treat the race as success.
+            gh pr view "$BRANCH" --state OPEN >/dev/null 2>&1 && \
+              echo "PR created by a concurrent run; ok" || exit 1
           fi

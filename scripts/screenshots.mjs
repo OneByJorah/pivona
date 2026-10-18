@@ -16,11 +16,44 @@ const OUT = process.env.OUT_DIR || "docs/screenshots";
 const RECORD = process.env.RECORD === "1";
 
 // Edit this list per project: one entry per meaningful screen worth showing.
+// The dashboard is a single-page app: showPage(id) switches screens, and the
+// app sets #app-ready to "ready" after the first status render.
 const PAGES = [
   {
     name: "dashboard",
     path: "/",
     ready: () => document.getElementById("app-ready")?.textContent === "ready",
+  },
+  {
+    name: "traffic",
+    path: "/",
+    show: "traffic",
+    ready: () =>
+      document.getElementById("page-traffic")?.classList.contains("active") &&
+      document.getElementById("app-ready")?.textContent === "ready",
+  },
+  {
+    name: "clients",
+    path: "/",
+    show: "clients",
+    ready: () =>
+      document.getElementById("page-clients")?.classList.contains("active") &&
+      document.getElementById("app-ready")?.textContent === "ready",
+  },
+  {
+    name: "vpn",
+    path: "/",
+    show: "vpn",
+    ready: () =>
+      document.getElementById("page-vpn")?.classList.contains("active") &&
+      document.getElementById("app-ready")?.textContent === "ready",
+  },
+  {
+    name: "settings",
+    path: "/",
+    show: "settings",
+    ready: () =>
+      document.getElementById("page-settings")?.classList.contains("active"),
   },
 ];
 
