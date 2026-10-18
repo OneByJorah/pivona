@@ -1,12 +1,12 @@
 [Unit]
-Description=PiRouter Pro Dashboard
+Description=pivona Dashboard
 After=network.target
 
 [Service]
 Type=simple
 User=pi
-WorkingDirectory=/var/www/pirouter-pro
-ExecStart=/usr/bin/python3 /var/www/pirouter-pro/app.py
+WorkingDirectory=/var/www/pivona
+ExecStart=/usr/bin/python3 /var/www/pivona/app.py
 Restart=always
 RestartSec=10
 StandardOutput=journal
