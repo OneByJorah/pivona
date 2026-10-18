@@ -90,7 +90,15 @@ let failed = false;
 for (const p of PAGES) {
   const page = await context.newPage();
   await page.goto(new URL(p.path, BASE).toString(), { waitUntil: "networkidle" });
-  if (p.ready) await page.waitForFunction(p.ready, { timeout: 15000 });
+  // SPA navigation: switch to the target page before waiting for it to be ready.
+  if (p.show) await page.evaluate((id) => window.showPage?.(id), p.show);
+  if (p.ready) {
+    // Bounded wait with a catch-through: if the ready condition never turns
+    // true, capture whatever rendered instead of failing the whole run.
+    await page.waitForFunction(p.ready, { timeout: 15000 }).catch(() => {
+      console.warn(`warn: ${p.name} not ready within timeout; capturing as rendered`);
+    });
+  }
 
   const text = (await page.evaluate(() => document.body.innerText)) + "\n" + (await page.title());
   const hits = FORBIDDEN.filter((f) => f.re.test(text)).map((f) => f.label);
