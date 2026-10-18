@@ -1,13 +1,13 @@
 #!/bin/bash
-# PiRouter Pro - Startup Script
-# Requires root privileges
+# pivona - Startup Script
+# Requires root privileges for real router control
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-APP_DIR="/var/lib/pirouter"
+APP_DIR="/var/lib/pivona"
 
-echo "🚀 Starting PiRouter Pro..."
+echo "🚀 Starting pivona..."
 
 # Create data directory
 mkdir -p "$APP_DIR"

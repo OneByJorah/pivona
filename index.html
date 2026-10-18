@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PiRoute — Professional Raspberry Pi Router Dashboard</title>
+<title>pivona — Professional Raspberry Pi Router Dashboard</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%A1%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -275,24 +275,24 @@ footer a { color: var(--accent2); text-decoration: none; }
 <nav>
   <div class="nav-brand">
     <div class="nav-brand-icon">📡</div>
-    <span>PiRoute</span>
+    <span>pivona</span>
   </div>
   <div class="nav-links">
     <a href="#features">Features</a>
     <a href="#architecture">Architecture</a>
     <a href="#tech">Tech Stack</a>
     <a href="#quickstart">Quick Start</a>
-    <a href="https://github.com/OneByJorah/PiRoute" target="_blank">GitHub</a>
+    <a href="https://github.com/OneByJorah/pivona" target="_blank">GitHub</a>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-badge">🟢 v2.0 · Production Ready</div>
-  <h1>PiRoute</h1>
+  <div class="hero-badge">🟢 v2.0 · Production Ready · Formerly PiRoute</div>
+  <h1>pivona</h1>
   <p>Professional router dashboard for Raspberry Pi — manage routing, firewall, DHCP, DNS, VPN tunnels, and real-time traffic monitoring from a sleek web interface.</p>
   <div class="hero-btns">
     <a class="btn btn-primary" href="#quickstart">🚀 Get Started</a>
-    <a class="btn btn-secondary" href="https://github.com/OneByJorah/PiRoute">📦 View on GitHub</a>
+    <a class="btn btn-secondary" href="https://github.com/OneByJorah/pivona">📦 View on GitHub</a>
   </div>
   <div class="badge-strip">
     <img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="MIT">
@@ -306,7 +306,7 @@ footer a { color: var(--accent2); text-decoration: none; }
 <!-- SCREENSHOT -->
 <section>
   <div class="screenshot-wrap">
-    <img src="screenshot.png" alt="PiRoute Dashboard Screenshot">
+    <img src="screenshot.png" alt="pivona Dashboard Screenshot">
   </div>
 </section>
 
@@ -363,7 +363,7 @@ footer a { color: var(--accent2); text-decoration: none; }
 <section id="architecture">
   <div class="section-label">🏗️ Architecture</div>
   <h2 class="section-title">Route Flow</h2>
-  <p class="section-sub">How network traffic flows through PiRoute from internet to LAN devices, with all management layers.</p>
+  <p class="section-sub">How network traffic flows through pivona from internet to LAN devices, with all management layers.</p>
   <div class="arch-wrap">
     <svg class="arch-svg" viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg" font-family="'Inter',sans-serif">
       <defs>
@@ -383,16 +383,16 @@ footer a { color: var(--accent2); text-decoration: none; }
       <rect x="30" y="110" width="120" height="50" rx="25" fill="url(#g-blue)" filter="url(#g-glow)"/>
       <text x="90" y="140" text-anchor="middle" fill="white" font-size="14" font-weight="600">Internet</text>
 
-      <!-- Arrow Internet → PiRoute -->
+      <!-- Arrow Internet → pivona -->
       <line x1="150" y1="135" x2="190" y2="135" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow-b)"/>
       <polygon points="190,130 200,135 190,140" fill="#3b82f6"/>
 
-      <!-- PiRoute Box -->
+      <!-- pivona Box -->
       <rect x="210" y="75" width="150" height="200" rx="14" fill="#0d1526" stroke="rgba(59,130,246,0.25)" stroke-width="1.5"/>
       <rect x="210" y="75" width="150" height="200" rx="14" fill="url(#g-blue)" opacity="0.05"/>
-      <text x="285" y="100" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700" letter-spacing="2">PiRoute CORE</text>
+      <text x="285" y="100" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700" letter-spacing="2">pivona CORE</text>
 
-      <!-- Route flow inside PiRoute -->
+      <!-- Route flow inside pivona -->
       <rect x="222" y="115" width="126" height="28" rx="6" fill="url(#g-cyan)" opacity="0.9"/>
       <text x="285" y="134" text-anchor="middle" fill="white" font-size="11" font-weight="600">Routing (iptables)</text>
 
@@ -405,7 +405,7 @@ footer a { color: var(--accent2); text-decoration: none; }
       <rect x="222" y="220" width="126" height="28" rx="6" fill="url(#g-green)" opacity="0.9"/>
       <text x="285" y="239" text-anchor="middle" fill="white" font-size="11" font-weight="600">VPN Gateway</text>
 
-      <!-- Arrow PiRoute → Services -->
+      <!-- Arrow pivona → Services -->
       <line x1="360" y1="135" x2="400" y2="135" stroke="#64748b" stroke-width="1.5"/>
       <line x1="360" y1="164" x2="400" y2="164" stroke="#64748b" stroke-width="1.5"/>
       <line x1="360" y1="199" x2="400" y2="199" stroke="#64748b" stroke-width="1.5"/>
@@ -484,8 +484,8 @@ footer a { color: var(--accent2); text-decoration: none; }
   <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem;color:var(--accent2)">🐧 Raspberry Pi</h3>
   <div class="code-block">
     <span class="comment"># Clone and run</span><br>
-    <span class="cmd">git clone</span> https://github.com/OneByJorah/PiRoute.git<br>
-    <span class="cmd">cd</span> PiRoute<br>
+    <span class="cmd">git clone</span> https://github.com/OneByJorah/pivona.git<br>
+    <span class="cmd">cd</span> pivona<br>
     <span class="cmd">sudo bash start.sh</span><br><br>
     <span class="comment"># Open http://localhost:5000</span>
   </div>

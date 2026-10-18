@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Capture PiRoute screenshots using Playwright HTML mockups.
+"""Capture pivona screenshots using Playwright HTML mockups.
 
 Usage:
     python scripts/capture-screenshots.py
@@ -22,7 +22,7 @@ DASHBOARD_HTML = r"""
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PiRoute - Router Dashboard</title>
+    <title>pivona - Router Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -58,7 +58,7 @@ DASHBOARD_HTML = r"""
 </head>
 <body>
     <div class="sidebar">
-        <div class="logo">🛜 PiRoute</div>
+        <div class="logo">🛜 pivona</div>
         <div class="nav-item active">📊 Dashboard</div>
         <div class="nav-item">🌐 Network Map</div>
         <div class="nav-item">📈 Traffic</div>
@@ -94,7 +94,7 @@ MAP_HTML = r"""
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>PiRoute - Network Map</title>
+    <title>pivona - Network Map</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -112,7 +112,7 @@ MAP_HTML = r"""
 <body>
     <h1>🌐 Network Map</h1>
     <div class="map-container">
-        <div class="device router" style="top: 30px; left: 50%; transform: translateX(-50%);">🛜 PiRouter (Gateway)</div>
+        <div class="device router" style="top: 30px; left: 50%; transform: translateX(-50%);">🛜 pivona (Gateway)</div>
         <div class="device pc" style="top: 150px; left: 10%;">💻 Desktop PC</div>
         <div class="device pc" style="top: 150px; left: 35%;">💻 Laptop</div>
         <div class="device phone" style="top: 150px; left: 60%;">📱 iPhone</div>
@@ -130,7 +130,7 @@ TRAFFIC_HTML = r"""
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>PiRoute - Traffic Monitor</title>
+    <title>pivona - Traffic Monitor</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }

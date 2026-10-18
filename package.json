@@ -1,0 +1,12 @@
+{
+  "name": "pivona",
+  "version": "2.0.0",
+  "description": "Professional Raspberry Pi router dashboard screenshots and dev helpers",
+  "private": true,
+  "scripts": {
+    "screenshots": "node scripts/screenshots.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}

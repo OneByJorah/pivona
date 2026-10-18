@@ -22,5 +22,9 @@ Thumbs.db
 # Logs
 *.log
 
+# Node/screenshot tooling
+node_modules/
+tmp/
+
 # OneByJorah portfolio tooling
 .venv-screenshot/

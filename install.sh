@@ -3,7 +3,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-echo "=== Installing PiRoute ==="
+echo "=== Installing pivona ==="
 
 if ! command -v docker &> /dev/null; then
     echo "Docker is required but not installed. Please install Docker first."
@@ -18,18 +18,18 @@ fi
 if [ ! -f .env ]; then
     if [ -f .env.example ]; then
         cp .env.example .env
-        echo "Created .env from .env.example. Please review and set real values before production use."
+        echo "Created .env from .env.example. Set DEMO_MODE=false for a real gateway."
     else
         echo "No .env.example found; creating empty .env"
         touch .env
     fi
 fi
 
-echo "Building and starting PiRoute on port 5000..."
+echo "Building and starting pivona on port 5000..."
 if docker compose version &> /dev/null; then
     docker compose up --build -d
 else
     docker-compose up --build -d
 fi
 
-echo "PiRoute installed. Access: http://localhost:5000"
+echo "pivona installed. Access: http://localhost:5000"

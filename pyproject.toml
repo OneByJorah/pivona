@@ -1,0 +1,37 @@
+[project]
+name = "pivona"
+version = "2.0.0"
+description = "Professional Raspberry Pi router dashboard — routing, firewall, DHCP, DNS, VPN management and real-time traffic monitoring."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [
+    { name = "Jhonattan L. Jimenez" },
+]
+keywords = ["raspberry-pi", "router", "dashboard", "vpn", "firewall", "dhcp", "dns"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "flask",
+    "psutil",
+    "speedtest-cli",
+    "gunicorn",
+]
+
+[project.urls]
+Homepage = "https://github.com/OneByJorah/pivona"
+Repository = "https://github.com/OneByJorah/pivona"
+Issues = "https://github.com/OneByJorah/pivona/issues"
+
+[build-system]
+requires = ["setuptools >=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["app", "init_db", "wsgi"]

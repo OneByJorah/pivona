@@ -1,30 +1,35 @@
 # =============================================================================
-# EdgeRouter (PiRouter Pro) — docker-compose.yml
+# pivona — docker-compose.yml
+# =============================================================================
+# Quick local demo (no NET_ADMIN needed):
+#   cp .env.example .env
+#   docker compose up -d --build
+#   curl http://127.0.0.1:5000/healthz
+#
+# For a real router deployment, see the NET_ADMIN notes in README.md.
 # =============================================================================
 
 services:
-  edgerouter:
-    image: jorahone/edgerouter:latest
+  pivona:
+    image: ghcr.io/onebyjorah/pivona:latest
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: edgerouter
+    container_name: pivona
     restart: unless-stopped
     ports:
-      - "127.0.0.1:5000:5000"
+      - "127.0.0.1:${HOST_PORT:-5000}:5000"
     volumes:
-      # SQLite database persistence
-      - edgerouter_data:/var/lib/pirouter
-    environment:
-      - FLASK_ENV=${FLASK_ENV:-production}
-      - TZ=${TZ:-UTC}
+      - pivona_data:/var/lib/pivona
+    env_file:
+      - .env.example
     networks:
-      - edgerouter_net
+      - pivona_net
 
 volumes:
-  edgerouter_data:
+  pivona_data:
     driver: local
 
 networks:
-  edgerouter_net:
+  pivona_net:
     driver: bridge

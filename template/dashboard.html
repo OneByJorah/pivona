@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PiRouter Pro</title>
+<title>pivona — Router Dashboard</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%A1%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -427,7 +427,7 @@ body::before {
     <div class="logo-mark">
       <div class="logo-icon">📡</div>
       <div>
-        <div class="logo-text">PiRouter</div>
+        <div class="logo-text">pivona</div>
         <div class="logo-sub">PRO EDITION</div>
       </div>
     </div>
@@ -478,6 +478,7 @@ body::before {
 
 <!-- MAIN CONTENT -->
 <main class="main">
+<span id="app-ready" hidden></span>
 
   <!-- TOPBAR -->
   <div class="topbar">
@@ -729,8 +730,8 @@ body::before {
         <span class="card-title">📋 System Logs</span>
         <div style="display:flex;gap:0.5rem;align-items:center">
           <select id="log-service" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:var(--radius-sm);padding:0.3rem 0.6rem;font-size:0.8rem;font-family:var(--sans)">
-            <option value="pirouter-dashboard">Dashboard</option>
-            <option value="pirouter-bot">Telegram Bot</option>
+            <option value="pivona-dashboard">Dashboard</option>
+            <option value="pivona-bot">Telegram Bot</option>
             <option value="hostapd">Hostapd</option>
             <option value="dnsmasq">DNSMasq</option>
             <option value="wg-quick@wg0">WireGuard</option>
@@ -754,7 +755,7 @@ body::before {
         <div style="display:flex;flex-direction:column;gap:0.75rem">
           <div>
             <label style="font-size:0.78rem;color:var(--text3);display:block;margin-bottom:4px">SSID Name</label>
-            <input type="text" value="EdgeRouter" style="width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:var(--radius-sm);padding:0.5rem 0.75rem;font-size:0.85rem;font-family:var(--sans)">
+            <input type="text" value="pivona" style="width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:var(--radius-sm);padding:0.5rem 0.75rem;font-size:0.85rem;font-family:var(--sans)">
           </div>
           <div>
             <label style="font-size:0.78rem;color:var(--text3);display:block;margin-bottom:4px">Channel</label>
@@ -959,6 +960,7 @@ function updateStats(s){
   tc.className='stat-card '+(temp>=75?'temp-hot':temp>=60?'temp-warn':'temp-ok');
 
   document.getElementById('s-rx').textContent=fmtBytes(s.net_rx);
+  document.getElementById('app-ready').textContent='ready';
 
   // Update live chart
   const now=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
@@ -1242,7 +1244,7 @@ setInterval(fetchStats, 10000);
 // Remove this block on actual Pi
 (function tryDemo(){
   fetch('/api/stats').catch(()=>{
-    const fakeStats={cpu:42,mem_used:38,mem_total:1024,disk_used:23,disk_total:16,temp:52,net_rx:8589934592,net_tx:2147483648,clients:3,ext_ip:'203.0.113.1',uptime:'up 2 days, 4 hours',hostname:'pirouter'};
+    const fakeStats={cpu:42,mem_used:38,mem_total:1024,disk_used:23,disk_total:16,temp:52,net_rx:8589934592,net_tx:2147483648,clients:3,ext_ip:'203.0.113.1',uptime:'up 2 days, 4 hours',hostname:'pivona'};
     const fakeVPNs={warp:{name:'Cloudflare WARP',active:true,detail:'Connected via WARP'},wireguard:{name:'WireGuard',active:false,detail:'Inactive'},'mesh-vpn':{name:'Mesh-VPN',active:true,detail:'mesh-vpn up, exit node: none'},nordvpn:{name:'NordVPN',active:false,detail:'Inactive'},netbird:{name:'NetBird',active:false,detail:'Inactive'},unifi:{name:'UniFi Teleport',active:false,detail:'Inactive'}};
     updateStats(fakeStats);
     updateVPNMini(fakeVPNs);
