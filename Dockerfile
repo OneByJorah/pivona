@@ -4,7 +4,7 @@
 # Tag: ghcr.io/onebyjorah/pivona:latest
 # =============================================================================
 
-FROM python:3.14-slim AS builder
+FROM python:3.15-slim AS builder
 
 WORKDIR /build
 
@@ -20,7 +20,7 @@ RUN pip install --no-cache-dir --user --upgrade pip && \
     pip install --no-cache-dir --user -r requirements.txt
 
 # ---- Runtime Stage ----
-FROM python:3.14-slim
+FROM python:3.15-slim
 
 ENV PYTHONUNBUFFERED=1
 
